@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Undangan Aditya & Bella</title>
+<style>
+:root{--bg:#f7f3ed;--paper:#fffdf9;--ink:#51483f;--gold:#b69a68;--muted:#897f73}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Arial,sans-serif}
+main{max-width:760px;margin:auto;background:var(--paper);min-height:100vh;text-align:center}
+header{padding:75px 22px 55px;background:linear-gradient(135deg,#f7f3ed,#fffdf9)}
+.kicker{letter-spacing:4px;text-transform:uppercase;font-size:11px;color:var(--gold)}
+h1,h2,.date{font-family:Georgia,serif;font-weight:400;color:#806d50}
+h1{font-size:clamp(40px,8vw,64px);line-height:1.1;margin:22px 0}
+h2{font-size:29px;margin:0 0 14px}
+.date{font-size:32px;margin:24px}
+section{padding:38px 24px;border-top:1px solid #eee6d9}
+.card{background:#faf7f1;padding:22px;margin:12px auto;max-width:520px}
+.button{display:inline-block;padding:11px 20px;border:1px solid var(--gold);color:#776344;text-decoration:none;background:transparent;cursor:pointer}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ded5c8;font:inherit}
+textarea{min-height:85px}form{max-width:480px;margin:18px auto;text-align:left}label{font-size:13px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted)}footer{padding:28px;color:var(--muted);font-size:12px}
+</style></head><body><main>
+<header><div class="kicker">The Wedding Invitation</div><p>Dengan penuh rasa syukur, kami mengundang</p>
+<h1>Aditya <span style="color:#b69a68">&</span> Bella</h1><p>Untuk merayakan hari bahagia kami</p>
+<div class="date">12 · 12 · 2026</div><p>Kepada Yth.</p><h2 id="guestName">Tamu Undangan</h2>
+<p class="note">Merupakan kehormatan bagi kami apabila Anda berkenan hadir.</p><a class="button" href="#rsvp">Konfirmasi Kehadiran</a></header>
+<section><h2>Informasi Acara</h2>
+<div class="card"><strong>Akad Nikah</strong><p>Sabtu, 12 Desember 2026 · 08.00 WIB</p><p>Lokasi akan diperbarui</p></div>
+<div class="card"><strong>Resepsi</strong><p>Sabtu, 12 Desember 2026 · 11.00–14.00 WIB</p><p>Lokasi akan diperbarui</p></div>
+<p class="note">Tanggal, waktu, dan alamat masih berupa contoh.</p></section>
+<section id="rsvp"><h2>Konfirmasi Kehadiran</h2><p>Mohon isi konfirmasi kehadiran melalui formulir berikut.</p>
+<form id="rsvpForm"><label>Nama</label><input id="name" required>
+<label>Konfirmasi</label><select id="attendance" required><option value="">Pilih jawaban</option><option>Hadir</option><option>Tidak dapat hadir</option></select>
+<label>Jumlah tamu</label><select id="guests"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+<label>Ucapan (opsional)</label><textarea id="message"></textarea><button class="button" type="submit">Kirim RSVP</button></form>
+<p class="note" id="formNote">RSVP belum terhubung ke Google Sheets. Kita sambungkan pada tahap berikutnya.</p></section>
+<section><h2>Amplop Digital</h2><p>Doa restu Anda merupakan hadiah terindah bagi kami.</p>
+<div class="card"><strong>Bank / E-wallet</strong><p>Nama pemilik dan nomor rekening akan ditambahkan.</p></div><p class="note">QRIS dapat ditambahkan setelah data final tersedia.</p></section>
+<footer>Terima kasih atas doa dan kehadiran Anda.</footer></main>
+<script>
+const guest=new URLSearchParams(location.search).get('to');
+if(guest){const safe=guest.replace(/[<>]/g,'').slice(0,80);document.getElementById('guestName').textContent=safe;document.getElementById('name').value=safe;}
+document.getElementById('rsvpForm').addEventListener('submit',e=>{e.preventDefault();alert('Terima kasih! RSVP belum tersimpan online. Kita akan menghubungkannya ke Google Forms/Sheets pada tahap berikutnya.');});
+</script></body></html>
